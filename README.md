@@ -21,7 +21,7 @@ Build and Run an image (called my-lap)
 
 docker build -t my-lap .
 
-docker run --link mysql -v /Users/dcox/src/docker/lamp/src:/var/www/html  -d -p 8080:80 --name my-lap my-lap
+docker run --link mysql -v /Users/dcox/src/docker-lap/src/:/www:rw  -d -p 8080:80 --name my-lap my-lap
 
  -v is to mount a volume for local edits
 
