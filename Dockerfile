@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y apache2 && apt-get install -y php5 && a
 
 #ADD src /var/www/html
 COPY etc/php5 /etc/php5
+COPY etc/apache2 /etc/apache2
 
 EXPOSE 80
 EXPOSE 8080

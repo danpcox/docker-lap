@@ -32,6 +32,8 @@ docker run --link mysql -v /Users/dcox/src/docker/lamp/src:/var/www/html  -d -p 
 #Connect to Image
 docker exec -i -t my-lap /bin/bash
 
+Connect to MySQL from LAP image: mysql -h 192.168.99.100 -proot
+
 #Stop Image
 docker stop my-lap
 docker rm my-lap
