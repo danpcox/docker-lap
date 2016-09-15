@@ -17,6 +17,7 @@ class Database
   function Database()
   {
     $config = Config::getInstance();
+
     $this->log_ = Logger::getLogger();
     $this->login_   = $config->dbUser_;
     $this->pass_    = $config->dbPass_;

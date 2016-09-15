@@ -1,4 +1,3 @@
-Dan Rocks
 <?
 phpinfo();
 ?>
