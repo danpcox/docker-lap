@@ -9,9 +9,13 @@ docker-machine env
 ##MySQL on Docker - https://hub.docker.com/_/mysql/
 UnInstall it: docker rm mysql
 
-Run it:   docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+Install it (first time only):   docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
 
 Connect to it:   docker exec -i -t mysql /bin/bash
+
+Stop it: docker stop mysql
+
+Start it: docker start mysql
 
 #PHP + Apache on Docker
 
