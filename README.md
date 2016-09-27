@@ -44,3 +44,7 @@ docker rm my-lap
 
 #MISC
 On Ubuntu, To search for a package, use apt-cache search
+
+#Docker Misc
+- List all inactive containers : docker ps -f "status=exited"
+- Remove all inactive containers: docker rm $(docker ps --filter "status=exited" -q)
