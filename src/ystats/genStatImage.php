@@ -49,7 +49,7 @@ while($row = mysqli_fetch_assoc($result)) {
   $counter++;
 }
 $graphDater = Array('dates' => $timeArray, 'values' => $valArray);
-createGraphImage("$name ($currentVal)", $graphDater, $forced, $daysBack, $height, $width);
+createGraphImage("$name Total Employee Count ($currentVal)", $graphDater, $forced, $daysBack, $height, $width);
 
 function createGraphImage($graphName, $graphData, $forced, $daysBack, $height, $width) {
     if(!$daysBack) { $daysBack = "all"; }

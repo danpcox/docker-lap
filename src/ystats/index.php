@@ -13,7 +13,6 @@ body {padding:10px; font-size:1.2em; margin: auto;}
 </head>
 <body>
 <?
-echo getenv("MYSQL_PASS");
 include_once("Database.php");
 
 $db = Database::getDatabase();
