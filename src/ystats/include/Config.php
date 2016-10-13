@@ -21,8 +21,8 @@ class Config
     $this->logger->info("Config Instance Created");
     $this->accessed_ = 1;
     $this->dbPass_ =  getenv("MYSQL_PASS");
-    if(!isset($this->dbPass_)) {
-      echo "MYSQL_PASS environment variable is not set for this instance!  DB won't work.";
+    if(!$this->dbPass_) {
+      echo "MYSQL_PASS environment variable is not set for this instance!  DB won't work.<br>";
     }
   }
 
