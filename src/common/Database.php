@@ -29,7 +29,7 @@ class Database
     if (!mysqli_ping($this->connection_))
     {
       echo mysqli_error($this->connection_);
-      echo "Error connecting to DB at " . $this->host_ . " With " . $this->login_;
+      echo "Error connecting to DB at " . $this->host_ . " With login " . $this->login_ . " And password " . $this->pass_;
       exit;
     }
   }
