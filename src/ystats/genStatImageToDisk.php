@@ -1,4 +1,6 @@
-<? error_reporting(E_ALL);
+<?php
+
+error_reporting(E_ALL);
 require_once("Database.php");
 require_once ('jpgraph-3.5.0b1/src/jpgraph.php');
 require_once ('jpgraph-3.5.0b1/src/jpgraph_line.php');
