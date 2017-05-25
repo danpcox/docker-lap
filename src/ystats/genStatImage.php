@@ -10,7 +10,7 @@ $forced = "";
 if(isset($_REQUEST["force"])) {
    $forced = $_REQUEST["force"];
 }
-$daysBack = "";
+$daysBack = 500;
 if(isset($_REQUEST["daysBack"])) {
   $daysBack = $_REQUEST["daysBack"];
 }
@@ -26,7 +26,7 @@ if(isset($_REQUEST["h"])) {
 $timeArray = Array();
 $valArray = Array();
 $db = Database::getDatabase();
-$sql = "select * from EMPLOYEE_COUNT where SVP like '$name' order by THE_DATE";
+$sql = "select * from EMPLOYEE_COUNT where SVP like '$name' and THE_DATE > DATE_SUB(now(), interval $daysBack day) order by THE_DATE";
 
 $result = $db->Query($sql);
 $numRows = mysqli_num_rows($result);
@@ -40,6 +40,7 @@ while($row = mysqli_fetch_assoc($result)) {
   $time = $row["THE_DATE"];
   $time = preg_replace('/2015-/', '', $time);
   $time = preg_replace('/2016-/', '', $time);
+  $time = preg_replace('/2017-/', '', $time);
   if($counter % $tickMod != 0) {
     $time = '';
   }
@@ -52,7 +53,6 @@ $graphDater = Array('dates' => $timeArray, 'values' => $valArray);
 createGraphImage("$name Total Employee Count ($currentVal)", $graphDater, $forced, $daysBack, $height, $width);
 
 function createGraphImage($graphName, $graphData, $forced, $daysBack, $height, $width) {
-    if(!$daysBack) { $daysBack = "all"; }
     $graphFile = $graphName;
     $graphFileNoSpaces = preg_replace('/ /', '_', $graphFile);
     $graphFileName = $graphFileNoSpaces . "-" . Date('Y-m-d') . "-$daysBack-$height-$width.png";

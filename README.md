@@ -25,7 +25,7 @@ Build and Run an image (called my-lap)
 
 docker build -t my-lap .
 
-docker run --link mysql -v /Users/dcox/src/docker-lap/src/:/www:rw  -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-lap
+docker run --link mysql -v /Users/dcox/src/docker-lap/src/:/www:rw -v /Users/dcox/src/docker-lap/sql:/www/sql -v /Users/dcox/src/docker-lap/data:/data  -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-lap
 
  -v is to mount a volume for local edits
 
@@ -36,7 +36,7 @@ docker run --link mysql -v /Users/dcox/src/docker-lap/src/:/www:rw  -d -p 8080:8
 #Connect to Image
 docker exec -i -t my-lap /bin/bash
 
-Connect to MySQL from LAP image: mysql -h 192.168.99.100 -proot
+Connect to MySQL from LAP image: mysql -h 192.168.99.100 -p$MYSQL_PASS
 
 #Stop Image
 docker stop my-lap

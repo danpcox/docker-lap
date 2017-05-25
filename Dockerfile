@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 # These all need to be on one line due to caching (http://stackoverflow.com/questions/37706635/in-docker-apt-get-install-fails-with-failed-to-fetch-http-archive-ubuntu-com)
-RUN apt-get update && apt-get install -y apache2 && apt-get install -y php5 && apt-get install -y mysql-client && apt-get install -y php5-mysql && apt-get install -y php5-gd && apt-get install -y curl
+RUN apt-get update && apt-get install -y apache2 && apt-get install -y php5 && apt-get install -y mysql-client && apt-get install -y php5-mysql && apt-get install -y php5-gd && apt-get install -y curl && apt-get install php5-curl -y
 
 #ADD src /www/
 COPY etc/php5 /etc/php5
