@@ -13,15 +13,22 @@ body {padding:10px; font-size:1.2em; margin: auto;}
 </head>
 <body>
 <?
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 include_once("Database.php");
-
 $db = Database::getDatabase();
 $todayName = date("l");
-$sql = "select distinct SVP from EMPLOYEE_COUNT order by SVP";
+$dateSQL = "select max(THE_DATE) as the_max from EMPLOYEE_COUNT";
+$result = $db->Query($dateSQL);
+$row = mysqli_fetch_assoc($result);
+$theDate = $row["the_max"];
+$sql = "select distinct(SVP) from EMPLOYEE_COUNT where THE_DATE = '$theDate'";
+//DATE_FORMAT(now(), '%Y-%m-%d');";
+echo $sql;
 $result = $db->Query($sql);
 while($row = mysqli_fetch_assoc($result)) {
   $svp = $row["SVP"];
-  echo "<img src=\"/genStatImage.php?svp=$svp&w=800&h=400\"><br>\n";
+  echo "<img src=\"/genStatImage.php?svp=$svp&w=800&h=400&daysBack=180\"><br>\n";
 }
 ?>
 </body>

@@ -14,7 +14,7 @@ class Config
   var $dbPass_ = "";
   var $dbHost_ = "192.168.99.100";
 //  var $dbHost_ = "localhost";
-  var $dbDB_ = "dan";
+  var $dbDB_ = "employees";
   function Config()
   {
     $this->logger = Logger::getLogger();
