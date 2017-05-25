@@ -12,9 +12,19 @@ body {padding:10px; font-size:1.2em; margin: auto;}
 </style>
 </head>
 <body>
+<form method=get action="index.php">
+Days Back: <select name=daysBack>
+<option>7</option>
+<option>14</option>
+<option>30</option>
+<option>90</option>
+<option>180</option>
+<option>365</option>
+<option>730</option>
+</select>
+<input type=submit>
+</form>
 <?
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 include_once("Database.php");
 $db = Database::getDatabase();
 $todayName = date("l");
@@ -26,9 +36,13 @@ $sql = "select distinct(SVP) from EMPLOYEE_COUNT where THE_DATE = '$theDate'";
 //DATE_FORMAT(now(), '%Y-%m-%d');";
 echo $sql;
 $result = $db->Query($sql);
+$daysBack = 180;
+if(isset($_REQUEST["daysBack"])) {
+	$daysBack = $_REQUEST["daysBack"];
+}
 while($row = mysqli_fetch_assoc($result)) {
   $svp = $row["SVP"];
-  echo "<img src=\"/genStatImage.php?svp=$svp&w=800&h=400&daysBack=180\"><br>\n";
+  echo "<img src=\"/genStatImage.php?svp=$svp&w=800&h=400&daysBack=$daysBack\"><br>\n";
 }
 ?>
 </body>
