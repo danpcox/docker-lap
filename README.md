@@ -1,5 +1,9 @@
 # docker-lap
 Linux-Apache-PHP docker container
+( On Windows - as administrator do this - "git config --system core.longpaths true" )
+
+( To checkout, git clone  https://github.com/danpcox/docker-lap.git )
+
 
 #Docker Machine:
 docker-machine start
