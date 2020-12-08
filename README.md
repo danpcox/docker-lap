@@ -10,16 +10,16 @@ docker-machine start
 
 docker-machine env
 
-##MySQL on Docker - https://hub.docker.com/_/mysql/
-UnInstall it: docker rm mysql
+##MariaDB on Docker - https://hub.docker.com/_/mariadb/
+UnInstall it: docker rm mariadb
 
-Install it (first time only):   docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+Install it (first time only):   docker run --name my-mariadb -p 3306:3306 -v /mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -d mariadb
 
 Connect to it:   docker exec -i -t mysql /bin/bash
 
-Stop it: docker stop mysql
+Stop it: docker stop my-mariadb
 
-Start it: docker start mysql
+Start it: docker start my-mariadb
 
 #PHP + Apache on Docker
 
@@ -29,7 +29,7 @@ Build and Run an image (called my-lap)
 
 docker build -t my-lap .
 
-docker run --link mysql -v /Users/dcox/src/docker-lap/src/:/www:rw -v /Users/dcox/src/docker-lap/sql:/www/sql -v /Users/dcox/src/docker-lap/data:/data  -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-lap
+docker run -v /www:/www:rw -v -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-lap
 
  -v is to mount a volume for local edits
 
