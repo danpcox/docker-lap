@@ -29,7 +29,7 @@ Build and Run an image (called my-lap)
 
 docker build -t my-lap .
 
-docker run -v /www:/www:rw -v -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-lap
+docker run -v /www:/www:rw -v -d -p 8080:80 --name my-lap my-lap -i -t /bin/bash
 
  -v is to mount a volume for local edits
 
@@ -40,7 +40,8 @@ docker run -v /www:/www:rw -v -d -p 8080:80 -e MYSQL_PASS=root --name my-lap my-
 #Connect to Image
 docker exec -i -t my-lap /bin/bash
 
-Connect to MySQL from LAP image: mysql -h 192.168.99.100 -p$MYSQL_PASS
+https://tecadmin.net/install-php-ubuntu-20-04/
+
 
 #Stop Image
 docker stop my-lap
