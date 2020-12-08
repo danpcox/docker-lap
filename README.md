@@ -27,9 +27,9 @@ http://jessesnet.com/development-notes/2015/docker-lamp-stack/
 
 Build and Run an image (called my-lap)
 
-docker build -t my-lap .
+docker build -t dan .
 
-docker run -v /www:/www:rw -v -d -p 8080:80 --name my-lap my-lap -i -t /bin/bash
+docker run --name dan -v /www:/www:rw -d -p 8080:80 -it dan /bin/bash
 
  -v is to mount a volume for local edits
 
@@ -38,14 +38,19 @@ docker run -v /www:/www:rw -v -d -p 8080:80 --name my-lap my-lap -i -t /bin/bash
  -p is which port to run as
 
 #Connect to Image
-docker exec -i -t my-lap /bin/bash
+docker exec -it dan /bin/bash
+
 
 https://tecadmin.net/install-php-ubuntu-20-04/
 
+Then do a docker commit changes once you've installed php
 
-#Stop Image
-docker stop my-lap
-docker rm my-lap
+#Stop Container
+docker stop dan
+docker rm dan
+
+# Remove Image
+docker rmi dan
 
 #MISC
 On Ubuntu, To search for a package, use apt-cache search
