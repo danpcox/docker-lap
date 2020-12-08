@@ -39,6 +39,7 @@ Then do a docker commit changes once you've installed php
 
 # Stop Container
 docker stop dan
+
 docker rm dan
 
 # Remove Image
